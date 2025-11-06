@@ -128,8 +128,12 @@ class Board:
         Returns:
             True if we have failed to fill out the puzzle, False otherwise
         """
-        pass
-
+        for row in self.rows:
+            for col in row:
+                print(col)
+                if col == []:
+                    return True
+        return False
     def goal_test(self) -> bool:
         """Check if we've completed the puzzle (if we've placed all the numbers).
         Naively checks that we've placed as many numbers as cells on the board
@@ -137,7 +141,7 @@ class Board:
         Returns:
             True if we've placed all numbers, False otherwise
         """
-        pass
+        return self.num_nums_placed == self.size * self.size
 
     def update(self, row: int, column: int, assignment: int) -> None:
         """Assigns the given value to the cell given by passed in row and column
